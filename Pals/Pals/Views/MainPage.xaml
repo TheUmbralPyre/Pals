@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="Pals.Views.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#89f7fe" Offset="0.0"/>
+            <GradientStop Color="#66a6ff" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <Grid>
+
+            <CollectionView ItemsSource="{Binding Pals}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <forms:AnimationView AutoPlay="True" RepeatMode="Infinite"
+                                             HorizontalOptions="Center" VerticalOptions="Center">
+                            <forms:AnimationView.Animation>
+                                <Binding StringFormat="{}{0}.json" Path="Name"/>
+                            </forms:AnimationView.Animation>
+                        </forms:AnimationView>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <SearchBar HorizontalOptions="Center" VerticalOptions="Start"
+                       TextColor="#66a6ff" CancelButtonColor="#66a6ff"/>
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
